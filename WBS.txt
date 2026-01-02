@@ -1,0 +1,194 @@
+Phase 0: Project Setup & Environment (Prep Work)
+
+Activities:
+
+Set up project repository: ascensio/
+
+Create separate backend/ and frontend/ folders
+
+Create virtual environment for backend (venv)
+
+Install base packages:
+
+FastAPI, Uvicorn, SQLAlchemy, Pydantic, pandas, scikit-learn, SHAP, matplotlib
+
+Initialize frontend with React (CRA or Vite)
+
+Setup .gitignore, README, basic folder structure
+
+Deliverable: Clean folder structure, virtual environments ready
+
+Phase 1: Database & Models
+
+Goal: Define all data entities and their relationships
+
+Activities:
+
+Decide on database (SQLite for MVP)
+
+Define SQLAlchemy models:
+
+UserProfile → skills, education, projects, interests
+
+CareerPrediction → predicted career, probability, reasoning
+
+MarketData → job trends, salary, growth (static CSV or JSON for MVP)
+
+Define Pydantic schemas for API input/output
+
+Setup database connection (database.py) and create tables
+
+Deliverable: Database ready with models & tables
+
+Phase 2: Backend API – Profile Management
+
+Goal: Accept and store user profile data
+
+Activities:
+
+Create profile.py routes:
+
+POST /profile → submit user profile
+
+GET /profile/{id} → fetch profile
+
+Validate input via Pydantic schemas
+
+Store profile in DB
+
+Return confirmation + profile ID
+
+Deliverable: Fully working profile API
+
+Phase 3: Market Intelligence Engine
+
+Goal: Prepare market data for career fit calculation
+
+Activities:
+
+Collect sample datasets:
+
+Job trends, salary ranges, skill demand (from Kaggle or mocked CSV)
+
+Create market.py routes:
+
+GET /market/{career} → return market-fit, growth, stability scores
+
+Preprocess data: normalize values 0–100
+
+(Optional) Implement simple caching for fast queries
+
+Deliverable: Market intelligence API returning scores
+
+Phase 4: Career Fit Prediction (ML Core)
+
+Goal: Predict career suitability based on profile + market data
+
+Activities:
+
+Create prediction.py service:
+
+Encode skills, projects, education into feature vector
+
+Merge with market scores
+
+Train ML model (Random Forest for MVP) on sample data
+
+Create career.py routes:
+
+POST /career-fit → returns top N career paths + probability
+
+Integrate with DB → save predictions for future reference
+
+Deliverable: Career fit prediction endpoint
+
+Phase 5: Explainable Reasoning
+
+Goal: Provide reasoning for predictions
+
+Activities:
+
+Simple Rule-based reasoning for MVP:
+
+Example: If SQL + Python + backend projects → Data Engineer
+
+Optional: SHAP for model feature importance
+
+API endpoint:
+
+GET /career-explanation/{profile_id} → returns human-readable reasoning
+
+Integrate reasoning into career fit response
+
+Deliverable: Explainable reasoning for each predicted career
+
+Phase 6: Career Path Simulator
+
+Goal: Show future trajectory for career paths
+
+Activities:
+
+Simple simulation formula:
+
+salary_next_year = current_salary * (1 + market_growth * skill_factor)
+
+
+Calculate projections for 1, 3, 5 years
+
+Suggest skill roadmap for highest projected growth
+
+API endpoint: GET /career-simulation/{profile_id} → returns salary + skill plan
+
+Optional: Use matplotlib or Plotly for graph generation (serve as image/JSON)
+
+Deliverable: Career simulation API
+
+Phase 7: Frontend Development (React)
+
+Goal: Provide UI for profile input and results display
+
+Activities:
+
+Create ProfileForm → collects skills, education, projects, interests
+
+Create CareerCard → shows career path, probability, reasoning
+
+Create Simulator → graph projections + recommended skills
+
+Integrate Axios API calls to backend endpoints
+
+Basic styling (MUI/Tailwind/Custom CSS)
+
+Deliverable: Working React frontend with interactive dashboard
+
+Phase 8: Integration & Testing
+
+Goal: Ensure all modules work together
+
+Activities:
+
+Test backend APIs with Postman
+
+Test ML predictions with multiple mock profiles
+
+Connect frontend → make sure Axios calls fetch data properly
+
+Add error handling (missing fields, invalid input)
+
+Unit tests for backend + optional frontend tests
+
+Deliverable: End-to-end working MVP
+
+Phase 9: Enhancement & Optional Features
+
+Optional/Advanced:
+
+LLM-based explanations using GPT → more natural reasoning
+
+Real-time market data scraping
+
+User authentication + profile history
+
+Export PDF report of career roadmap
+
+Add more careers & detailed skill mapping
