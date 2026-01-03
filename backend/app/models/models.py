@@ -15,30 +15,30 @@ class UserProfile(Base):
     interests = Column(Text)
 
     # relationship to career predictions
-    predictions = relationship("CareerPrediction", back_populates="user")
+    # predictions = relationship("CareerPrediction", back_populates="user")
 
 
-# Career prediction model
-class CareerPrediction(Base):
-    __tablename__ = "career_predictions"
+# # Career prediction model
+# class CareerPrediction(Base):
+#     __tablename__ = "career_predictions"
 
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer)  # link to UserProfile
-    career_name = Column(String)
-    probability = Column(Float)
-    reasoning = Column(Text)
+#     id = Column(Integer, primary_key=True, index=True)
+#     user_id = Column(Integer)  # link to UserProfile
+#     career_name = Column(String)
+#     probability = Column(Float)
+#     reasoning = Column(Text)
 
-    # relationship back to user
-    user = relationship("UserProfile", back_populates="predictions")
+#     # relationship back to user
+#     user = relationship("UserProfile", back_populates="predictions")
 
 
-# Market data model
-class MarketData(Base):
-    __tablename__ = "market_data"
+# # Market data model
+# class MarketData(Base):
+#     __tablename__ = "market_data"
 
-    id = Column(Integer, primary_key=True, index=True)
-    career_name = Column(String, unique=True)
-    average_salary = Column(Float)
-    growth_score = Column(Float)
-    stability_score = Column(Float)
-    job_trends = Column(Text)  # JSON string or CSV for MVP
+#     id = Column(Integer, primary_key=True, index=True)
+#     career_name = Column(String, unique=True)
+#     average_salary = Column(Float)
+#     growth_score = Column(Float)
+#     stability_score = Column(Float)
+#     job_trends = Column(Text)  # JSON string or CSV for MVP

@@ -13,7 +13,7 @@ class UserProfileBase(BaseModel):
 class UserProfileCreate(UserProfileBase):
     pass
 
-class UserProfile(UserProfileBase):
+class UserProfileRes(UserProfileBase):
     id: int
     class Config:
         orm_mode = True
