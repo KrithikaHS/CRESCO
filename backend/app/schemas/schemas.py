@@ -44,3 +44,20 @@ class MarketData(MarketDataBase):
     id: int
     class Config:
         orm_mode = True
+
+class MarketDataResponse(BaseModel):
+    career_name: str
+    average_salary: float
+    growth_score: float
+    stability_score: float
+    job_trends: List[str]
+
+    class Config:
+        from_attributes = True  # Pydantic v2
+
+class MarketDataCreate(BaseModel):
+    career_name: str
+    average_salary: float
+    growth_score: float
+    stability_score: float
+    job_trends: Optional[List[str]] = []

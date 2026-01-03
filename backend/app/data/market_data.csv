@@ -1,0 +1,4 @@
+career_name,average_salary,growth_score,stability_score,job_trends
+Data Scientist,120000,89,90,"['AI', 'ML', 'Big Data']"
+Frontend Developer,90000,75,0,"['React', 'Vue', 'Angular']"
+Backend Developer,95000,80,5,"['Python', 'Node', 'SQL']"
